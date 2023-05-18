@@ -1,0 +1,221 @@
+.chat {
+  @extend .default-page;
+
+  &__left-column {
+    flex: 0 1 30%;
+    background-color: #f7f8fa;
+    max-width: 30%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+    height: 100%;
+
+    @include mq(1023) {
+      display: none;
+    }
+
+    &_full {
+      @include mq(1023) {
+        display: flex;
+        flex: 1 1 auto;
+        max-width: none;
+        width: 100%;
+      }
+    }
+  }
+
+  &__title-container {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    &_with-border {
+      border-bottom: 1px solid $border-color;
+    }
+  }
+
+  &__title {
+    @extend .title;
+  }
+
+  &__button {
+    @extend .button;
+    width: 50px;
+    height: 30px;
+
+    &_big {
+      width: 80px;
+    }
+  }
+
+  &__contacts {
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__contact {
+    border-top: 1px solid $border-color;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    width: 100%;
+
+    &:hover {
+      background-color: $main-green;
+      color: white;
+    }
+
+    &_selected {
+      background-color: #f0f2f5;
+    }
+  }
+
+  &__contact-title {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 21px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__add-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__add-container {
+    position: relative;
+    border-top: 1px solid $border-color;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  &__add-close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: $red-color;
+  }
+
+  &__add-input {
+    @extend .input;
+    padding: 5px;
+  }
+
+  &__add-button {
+    width: 100%;
+    cursor: pointer;
+    color: $main-green;
+    border-bottom: 1px solid $main-green;
+    border-top: 1px solid $main-green;
+    transition: background-color 0.3s;
+    padding: 10px;
+
+    &:hover {
+      background-color: $main-green;
+      color: white;
+    }
+  }
+
+  &__right-column {
+    background-color: #f0f2f5;
+    border-left: 1px solid $border-color;
+    flex-grow: 1;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+    height: 100%;
+
+    @include mq(1023) {
+      display: none;
+    }
+
+    &_full {
+      @include mq(1023) {
+        display: flex;
+      }
+    }
+  }
+
+  &__right-header {
+    display: flex;
+  }
+
+  &__nothing {
+    flex: 1 1 auto;
+  }
+
+  &__messages {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    overflow-y: auto;
+  }
+
+  &__message {
+    background-color: white;
+    color: #000;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid $border-color;
+    display: flex;
+    flex-direction: column;
+
+    &_right {
+      background-color: $main-green;
+      color: #fff;
+      align-self: flex-end;
+    }
+  }
+
+  &__time {
+    color: gray;
+    font-size: 12px;
+    align-self: flex-end;
+
+    &_right {
+      color: #ffffff54;
+    }
+  }
+
+  &__input-container {
+    border-top: 1px solid $border-color;
+    padding: 10px;
+    display: flex;
+  }
+
+  &__message-input {
+    @extend .input;
+    resize: none;
+    display: flex;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: 0.5px;
+    font-weight: 400;
+    padding: 8px 7px 0;
+    width: 100%;
+    min-height: 72px;
+    max-height: 104px;
+    box-sizing: border-box;
+
+    @include mq(1439) {
+      padding: 6px 5px 0;
+    }
+  }
+
+  &__send-button {
+    margin-left: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: $main-green;
+  }
+}

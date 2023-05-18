@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-// import { useAppSelector } from '../../store/store';
-// import {} from '../../store/slices/user';
+import { useAppSelector } from '../../store/store';
+import { selectAuthChecking, selectLoggedIn } from '../../store/slices/user';
 
 // import Preloader from '../Preloader/Preloader';
 
@@ -10,8 +10,8 @@ interface ProtectedProps {
 }
 
 const Protected: React.FC<ProtectedProps> = ({ children }) => {
-  const loggedIn = true;
-  const authChecking = false;
+  const loggedIn = useAppSelector(selectLoggedIn);
+  const authChecking = useAppSelector(selectAuthChecking);
 
   return authChecking ? (
     // <Preloader isVisible={authChecking} />
@@ -19,7 +19,7 @@ const Protected: React.FC<ProtectedProps> = ({ children }) => {
   ) : loggedIn ? (
     children
   ) : (
-    <Navigate to={{ pathname: '/login' }} />
+    <Navigate to="/signin" />
   );
 };
 

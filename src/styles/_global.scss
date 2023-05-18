@@ -1,0 +1,60 @@
+.default-page {
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+  margin: 19px auto;
+  width: 1600px;
+  height: unquote('calc(100% - 38px)');
+  background-color: #f0f2f5;
+  display: flex;
+
+  @include mqh(500) {
+    height: 700px;
+  }
+
+  @include mq(1599) {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+}
+
+.title {
+  font-size: 24px;
+  color: $main-green;
+}
+
+.button {
+  border: 1px solid $main-green;
+  border-radius: 3px;
+  background-color: white;
+  color: $main-green;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    color: white;
+    background-color: $main-green;
+  }
+}
+
+.input {
+  color: black;
+  border: 2px solid $border-color;
+  border-radius: 5px;
+  background-color: rgba($color: white, $alpha: 1);
+  transition: border-color 0.5s;
+
+  &:hover {
+    border: 2px solid $main-green;
+  }
+
+  &:focus {
+    outline: none;
+    border: 2px solid $main-green;
+  }
+
+  &::placeholder {
+    color: gray;
+  }
+}

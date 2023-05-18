@@ -1,6 +1,9 @@
 @import './variables';
 @import './mixins';
+@import './global';
 @import './normalize.css';
 
 //Components
 @import '../components/App/App.scss';
+@import '../components/Chat/Chat.scss';
+@import '../components/Login/Login.scss';

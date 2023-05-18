@@ -1,4 +1,29 @@
 #root {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
+
+  @include mqh(500) {
+    height: auto;
+    min-height: 100vh;
+  }
+}
+
+.page {
+  font-family: 'Segoe UI', 'Helvetica Neue', 'Helvetica', 'Lucida Grande',
+    'Arial', 'Ubuntu', 'Cantarell', 'Fira Sans', sans-serif;
+  position: relative;
+  background-image: linear-gradient(180deg, #eae6df, #d1d7db);
+  display: flex;
+  width: 100%;
+  flex: 1 1 auto;
+
+  &::after {
+    top: 0;
+    left: 0;
+    background-color: $main-green;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 130px;
+  }
 }

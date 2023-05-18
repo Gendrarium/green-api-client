@@ -1,12 +1,19 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import userReducer from './slices/user';
+import * as api from '../utils/api';
 
 export const store = configureStore({
   reducer: {
     user: userReducer,
   },
   devTools: process.env.REACT_APP_NODE_ENV !== 'production',
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      thunk: {
+        extraArgument: api,
+      },
+    }),
 });
 
 export type AppDispatch = typeof store.dispatch;
@@ -14,7 +21,7 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
   RootState,
-  unknown,
+  typeof api,
   Action<string>
 >;
 
