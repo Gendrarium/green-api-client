@@ -113,15 +113,16 @@ const Chat: React.FC<ChatProps> = ({ handleLogout }) => {
       const res = await receiveNotification({ idInstance, apiTokenInstance });
 
       if (res) {
-        if (res.body.typeWebhook === 'incomingMessageReceived') {
-          console.log('только один раз за раз');
+        if (
+          res.body.typeWebhook === 'incomingMessageReceived' &&
+          res.body.messageData.typeMessage === 'textMessage'
+        ) {
           //add message to chats
           const newMessage: Message = { sender: '', message: '', timestamp: 0 };
           newMessage.sender = res.body.senderData.chatId.split('@')[0];
           newMessage.message = res.body.messageData.textMessageData.textMessage;
           newMessage.timestamp = res.body.timestamp * 1000;
           setChats((prev) => {
-            console.log('прошёл');
             const prevChats = [...prev];
             const chatIndex = prevChats.findIndex((i) => {
               return i.recipient === newMessage.sender;
